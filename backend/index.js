@@ -10,15 +10,16 @@ import applicationRoutes from "./routes/applicationRoutes.js";
 dotenv.config({});
 const app = express();
 
-// Middleware to parse JSON
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
 const corsOptions = {
   origin: "http://localhost:5173",
   credentials: true,
 };
 app.use(cors(corsOptions));
+
+// Middleware to parse JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/company", companyRoutes);
